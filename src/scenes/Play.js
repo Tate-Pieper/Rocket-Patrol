@@ -63,13 +63,31 @@ class Play extends Phaser.Scene {
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding * 2,
         this.p1Score, scoreConfig);
 
+        // initialize timer
+        this.countdown = game.settings.gameTimer / 1000;
+        // display time
+        let timeConfig = {
+            fontFamily: 'Courier',
+            fontSize: '28px',
+            backgroundColor: '#F3B141',
+            color: '#843605',
+            align: 'center',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 50
+        }
+        this.timeRight = this.add.text(borderUISize * 16 + borderPadding * 2, borderUISize + borderPadding * 2,
+        this.countdown, timeConfig);
+
         // game border
         this.border = this.add.tileSprite(0, 0, 640, 480, 'border').setOrigin(0, 0);
 
         // game over flag
         this.gameOver = false;
 
-        // 60 second play clock
+        // play clock
         scoreConfig.fixedWidth = 0;
         this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
             this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
@@ -80,6 +98,11 @@ class Play extends Phaser.Scene {
     }
 
     update() {
+        // display current time left for game
+        this.elapsed = Math.round(this.countdown - (this.clock.getElapsedSeconds()));
+        this.timeRight.text = this.elapsed;
+
+
         // check key input for restart
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
             this.scene.restart();
@@ -90,6 +113,7 @@ class Play extends Phaser.Scene {
         this.starfield.tilePositionX -= .5;
         this.planets.tilePositionX -= 1;
         this.asteroids.tilePositionX -= 2;
+
         if(!this.gameOver){
             this.p1Rocket.update();
             this.ship01.update();
