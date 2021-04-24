@@ -17,7 +17,10 @@ Point Breakdown:
  Total points: 100
 */
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7bdb1216e1562263e6750d7f1919991abf303c33
 let config = {
     type: Phaser.AUTO,
     width: 640,

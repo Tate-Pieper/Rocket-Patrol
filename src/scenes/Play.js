@@ -5,8 +5,12 @@ class Play extends Phaser.Scene {
     preload() {
         // load images/tile sprites
         this.load.image('rocket', './assets/rocket.png');
+<<<<<<< HEAD
         this.load.image('small_ship', './assets/ship_smaller.png');
         this.load.image('big_ship', './assets/ship_big.png');
+=======
+        this.load.image('spaceship', './assets/ship_small.png');
+>>>>>>> 7bdb1216e1562263e6750d7f1919991abf303c33
         this.load.image('starfield', './assets/stars.png');
         this.load.image('planets', './assets/planets.png');
         this.load.image('asteroids', './assets/asteroids.png');
@@ -29,10 +33,16 @@ class Play extends Phaser.Scene {
         this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderPadding * 6, 'rocket').setOrigin(0.5, 0);
 
         // add spaceships (x3)
+<<<<<<< HEAD
         this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'small_ship', 0, 50, 5).setOrigin(0, 0);
         this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'big_ship', 0, 30, 3).setOrigin(0,0);
         this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'big_ship', 0, 20, 3.5).setOrigin(0,0);
         this.ship04 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize*8 + borderUISize, 'big_ship', 0, 10, 3).setOrigin(0, 0);
+=======
+        this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30, 5).setOrigin(0, 0);
+        this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 20, 3).setOrigin(0,0);
+        this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10, 3).setOrigin(0,0);
+>>>>>>> 7bdb1216e1562263e6750d7f1919991abf303c33
 
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
