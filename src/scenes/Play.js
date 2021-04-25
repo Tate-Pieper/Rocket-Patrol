@@ -13,8 +13,8 @@ class Play extends Phaser.Scene {
         this.load.image('border', './assets/border.png');
 
         // load spritesheet
-        this.load.spritesheet('explosion', 'assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0,
-        endFrame: 9});
+        this.load.spritesheet('explosion', 'assets/explosion.png', {frameWidth: 57, frameHeight: 60, startFrame: 0,
+        endFrame: 8});
     }
 
     create() {
@@ -43,12 +43,13 @@ class Play extends Phaser.Scene {
         //animation config
         this.anims.create({
             key: 'explode',
-            frames: this.anims.generateFrameNumbers('explosion', {start: 0, end: 9, first: 0}),
+            frames: this.anims.generateFrameNumbers('explosion', {start: 0, end: 8, first: 0}),
             frameRate: 30
         });
 
         // initialize score
         this.p1Score = 0;
+
         // display score
         let scoreConfig = {
             fontFamily: 'Courier',
@@ -166,5 +167,12 @@ class Play extends Phaser.Scene {
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
         this.sound.play('sfx_explosion');
+        //this.addTime(this.clock);
     }
+    /*
+    addTime(clock){
+        console.log("Test time!", clock);
+        var newTime = this.clock
+    }
+    */
 }
